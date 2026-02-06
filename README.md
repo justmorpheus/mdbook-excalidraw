@@ -159,11 +159,11 @@ additional-js = ["mermaid.min.js", "mermaid-init.js", "theme/excalidraw.js"]
 additional-css = ["theme/excalidraw.css"]
 ```
 
-### Diagrams not rendering
+## Credits
 
-1. Check browser console for errors
-2. Verify mermaid.js loaded
-3. Validate syntax at mermaid.live
+- [https://mermaid-to-excalidraw.vercel.app/](https://mermaid-to-excalidraw.vercel.app/)
+- [badboy/mdbook-mermaid](https://github.com/badboy/mdbook-mermaid)
+
 
 ## Contributing
 
@@ -182,7 +182,7 @@ Contact: help@peachycloudsecurity.com
 
 ## Disclaimer
 
-This tool is designed for rendering Mermaid diagrams in mdBook projects. Always ensure you have proper authorization before using or modifying content you don't own. The authors are not responsible for any misuse of this software.
+This tool is designed for rendering Mermaid diagrams to excalidraw in mdBook projects.The authors are not responsible for any misuse of this software.
 
 This preprocessor and documentation are provided strictly for educational purposes, independently authored and not endorsed by the author's employers or any corporate entity, provided without warranties or guarantees, with no liability accepted for misuse or misapplication.
 
