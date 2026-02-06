@@ -18,30 +18,27 @@ jobs:
         os: [ubuntu-latest, macOS-latest, windows-latest]
         rust: [stable, beta]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: ${{ matrix.rust }}
-          profile: minimal
-          override: true
-          components: rustfmt, clippy
+        run: |
+          rustup toolchain install ${{ matrix.rust }} --profile minimal --component rustfmt,clippy
+          rustup default ${{ matrix.rust }}
 
       - name: Cache cargo registry
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cargo/registry
           key: ${{ runner.os }}-cargo-registry-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Cache cargo index
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.cargo/git
           key: ${{ runner.os }}-cargo-git-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Cache target directory
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: target
           key: ${{ runner.os }}-target-${{ matrix.rust }}-${{ hashFiles('**/Cargo.lock') }}
@@ -62,20 +59,16 @@ jobs:
       matrix:
         os: [ubuntu-latest, macOS-latest, windows-latest]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-          override: true
+        run: rustup toolchain install stable --profile minimal
 
       - name: Build
         run: cargo build --release --verbose
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mdbook-excalidraw-${{ matrix.os }}
           path: |

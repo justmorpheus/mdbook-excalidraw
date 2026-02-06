@@ -5,27 +5,12 @@ on:
     tags:
       - 'v*'
 
+permissions:
+  contents: write
+
 jobs:
-  create-release:
-    name: Create Release
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
-
   build-release:
     name: Build Release
-    needs: create-release
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -48,42 +33,52 @@ jobs:
             asset_name: mdbook-excalidraw-windows-amd64.exe
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          target: ${{ matrix.target }}
-          profile: minimal
-          override: true
+        run: |
+          rustup toolchain install stable --profile minimal
+          rustup target add ${{ matrix.target }}
 
       - name: Build
         run: cargo build --release --target ${{ matrix.target }}
 
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
         with:
-          upload_url: ${{ needs.create-release.outputs.upload_url }}
-          asset_path: ./target/${{ matrix.target }}/release/${{ matrix.artifact_name }}
-          asset_name: ${{ matrix.asset_name }}
-          asset_content_type: application/octet-stream
+          name: ${{ matrix.asset_name }}
+          path: ./target/${{ matrix.target }}/release/${{ matrix.artifact_name }}
 
-  publish-crate:
-    name: Publish to crates.io
+  create-release:
+    name: Create Release
     needs: build-release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: artifacts/**/*
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-crate:
+    name: Publish to crates.io
+    needs: create-release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
 
       - name: Install Rust
-        uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          profile: minimal
-          override: true
+        run: rustup toolchain install stable --profile minimal
 
       - name: Publish
         run: cargo publish --token ${{ secrets.CARGO_TOKEN }}

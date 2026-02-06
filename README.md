@@ -1,7 +1,7 @@
 # mdbook-excalidraw
 
 [![Crates.io](https://img.shields.io/crates/v/mdbook-excalidraw.svg)](https://crates.io/crates/mdbook-excalidraw)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![License: GPL](https://img.shields.io/badge/License-GPL-blue.svg)](LICENSE)
 [![CI](https://github.com/peachycloudsecurity/mdbook-excalidraw/workflows/CI/badge.svg)](https://github.com/peachycloudsecurity/mdbook-excalidraw/actions)
 [![Sponsor](https://img.shields.io/badge/Sponsor-%E2%9D%A4-ff69b4)](https://github.com/sponsors/peachycloudsecurity)
 
