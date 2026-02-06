@@ -139,9 +139,7 @@ fn handle_install(dir: &str) -> Result<()> {
     // Add preprocessor configuration
     let empty_table = Item::Table(Table::default());
 
-    let preprocessor = doc
-        .entry("preprocessor")
-        .or_insert(empty_table.clone());
+    let preprocessor = doc.entry("preprocessor").or_insert(empty_table.clone());
 
     let preprocessor_table = preprocessor
         .as_table_mut()
@@ -157,17 +155,13 @@ fn handle_install(dir: &str) -> Result<()> {
     }
 
     // Add theme files to output.html configuration
-    let output = doc
-        .entry("output")
-        .or_insert(empty_table.clone());
+    let output = doc.entry("output").or_insert(empty_table.clone());
 
     let output_table = output
         .as_table_mut()
         .ok_or_else(|| anyhow!("output section is not a table"))?;
 
-    let html = output_table
-        .entry("html")
-        .or_insert(empty_table.clone());
+    let html = output_table.entry("html").or_insert(empty_table.clone());
 
     let html_table = html
         .as_table_mut()
