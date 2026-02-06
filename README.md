@@ -175,15 +175,41 @@ GNU General Public License v3.0 - see LICENSE file.
 
 ## Author
 
-Divyanshu - Peachy Cloud Security
+Divyanshu - [PeachyCloudSecurity Youtube](https://www.youtube.com/@peachycloudsecurity)
 
 Contact: help@peachycloudsecurity.com
 
-## Support
 
-GitHub Issues: https://github.com/peachycloudsecurity/mdbook-excalidraw/issues
+## Disclaimer
 
-### Sponsor
+This tool is designed for rendering Mermaid diagrams in mdBook projects. Always ensure you have proper authorization before using or modifying content you don't own. The authors are not responsible for any misuse of this software.
+
+This preprocessor and documentation are provided strictly for educational purposes, independently authored and not endorsed by the author's employers or any corporate entity, provided without warranties or guarantees, with no liability accepted for misuse or misapplication.
+
+## Peachycloud Security
+
+Hands-On Multi-Cloud & Cloud-Native Security Education
+
+Created by The Shukla Duo (Anjali & Divyanshu), this tool is part of our mission to make cloud security accessible through practical, hands-on learning. We specialize in AWS, GCP, Kubernetes security, and DevSecOps practices.
+
+### Learn & Grow
+
+Explore our educational content and training programs:
+
+[YouTube Channel](https://www.youtube.com/@peachycloudsecurity) | [Website](https://peachycloudsecurity.com) | [1:1 Consultations](https://topmate.io/peachycloudsecurity)
+
+Learn cloud security through hands-on labs, real-world scenarios, and practical tutorials covering GCP & AWS, GKE & EKS, Kubernetes, Containers, DevSecOps, and Threat Modeling.
+
+### Support Our Work
+
+If this tool helps you with your documentation, consider supporting our educational mission:
 
 [![Sponsor on GitHub](https://img.shields.io/badge/Sponsor-GitHub-ea4aaa?logo=github-sponsors)](https://github.com/sponsors/peachycloudsecurity)
+
+
 [![Ko-fi](https://img.shields.io/badge/Ko--fi-Support-ff5e5b?logo=ko-fi)](https://ko-fi.com/peachycloudsecurity)
+
+Your support helps us create more free educational content and security tools for the community.
+
+
+
